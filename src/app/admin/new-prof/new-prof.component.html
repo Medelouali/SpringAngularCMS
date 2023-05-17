@@ -1,0 +1,65 @@
+<!-- component -->
+<span class="loader"  *ngIf="profsService.getIsLoading()" style="z-index: 9999;"></span>
+<form #addAdminForm="ngForm" (ngSubmit)="addProf(addAdminForm.value)" class="fixed inset-0 flex items-center justify-center" >
+    <div class="flex flex-col w-11/12 sm:w-5/6 lg:w-1/2 max-w-2xl mx-auto rounded-lg border border-gray-300 shadow-xl">
+      <div
+        class="flex flex-row justify-between p-6 bg-white border-b border-gray-200 rounded-tl-lg rounded-tr-lg"
+      >
+        <p class="font-semibold text-gray-800">Adding an prof</p>
+        <svg (click)="cancelProf()"
+          class="w-6 h-6 cursor-pointer"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          ></path>
+        </svg>
+      </div>
+      <div class="flex flex-col px-6 py-5 bg-gray-50">
+        <input name="username" type="text" placeholder="Prof username" class="my-2 px-4 py-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500" ngModel>
+        <hr />
+        <input name="email" type="email" placeholder="Prof email" class="my-2 px-4 py-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500" ngModel>
+        <hr />
+        <p class="mb-2 font-semibold text-gray-700">Description about the prof</p>
+        <textarea
+          name="description"
+          type="text"
+          placeholder="Type something about the prof..."
+          class="p-5 mb-5 bg-white border border-gray-200 rounded shadow-sm h-36"
+          id=""
+          ngModel
+        ></textarea>
+       
+        <div
+          class="flex flex-row items-center justify-between p-5 bg-white border border-gray-200 rounded shadow-sm"
+        >
+          <div class="flex flex-row items-center">
+            <img
+              class="w-10 h-10 mr-3 rounded-full"
+              src="https://randomuser.me/api/portraits/lego/7.jpg"
+              alt=""
+            />
+            <div class="flex flex-col">
+              <p class="font-semibold text-gray-800">We are adding new prof</p>
+              <p class="text-gray-400">Let's get bigger</p>
+            </div>
+          </div>
+          <!-- <h1 class="font-semibold text-red-400">Remove</h1> -->
+        </div>
+      </div>
+      <div
+        class="flex flex-row items-center justify-between p-5 bg-white border-t border-gray-200 rounded-bl-lg rounded-br-lg"
+      >
+        <p class="font-semibold text-gray-600 cursor-pointer" (click)="cancelProf()">Cancel</p>
+        <button type="submit" class="px-4 py-2 text-white font-semibold bg-blue-500 rounded">
+          Save Prof
+        </button>
+      </div>
+    </div>
+  </form>

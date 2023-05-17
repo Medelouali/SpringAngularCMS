@@ -1,0 +1,57 @@
+<span class="loader" *ngIf="searchService.getIsLoading()"></span>
+<h2 class="text-2xl font-bold text-gray-800 mb-4 m-auto">Students</h2>
+<div *ngFor="let student of (searchService.getSearchResults() | async)?.students" class="mt-6 flex flex-col gap-4 items-center justify-center bg-white">
+    <a href="#" class="w-[30rem] border-2 border-b-4 border-gray-200 rounded-xl hover:bg-gray-50">
+      <div class="grid grid-cols-6 p-5 gap-y-2">
+        <div>
+          <img [src]="'https://i.pravatar.cc/'+student.id" class="max-w-16 max-h-16 rounded-full" />
+        </div>
+        <!-- Description -->
+        <div class="col-span-5 md:col-span-4 ml-4">
+          <p class="text-gray-600 font-bold">{{student.username}}</p>
+          <p class="text-gray-400">{{student.role}}</p>
+        </div>
+      </div>
+      <a [routerLink]="['/students', 'student-courses']">
+        <button class="w-fit bg-red-500 text-red-100 px-4 py-2">View Courses</button>
+      </a>
+    </a>
+</div>
+<h2 class="text-2xl font-bold text-gray-800 mb-4 m-auto">Profs</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div *ngFor="let prof of (searchService.getSearchResults() | async)?.profs" class="w-full bg-white rounded-lg p-12 flex flex-col justify-center items-center">
+        <div class="mb-8">
+            <img class="object-center object-cover rounded-full h-36 w-36" src="https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80" alt="photo">
+        </div>
+        <div class="text-center">
+            <p class="text-xl text-gray-700 font-bold mb-2">{{prof.username}}</p>
+            <p class="text-base text-gray-400 font-normal">{{prof.role}}</p>
+            <p class="text-base text-gray-400 font-normal">{{prof.email}}</p>
+            <p class="text-base text-gray-400 font-normal">{{prof.description}}</p>
+        </div>
+    </div>
+</div>
+
+<h2 class="text-2xl font-bold text-gray-800 mb-4 m-auto">Admins</h2>
+<div class="max-w-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+	<div *ngFor="let admin of (searchService.getSearchResults() | async)?.admins" class="px-4 py-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+		<div class="flex flex-col items-center pb-10">
+			<img class="mb-3 w-24 h-24 rounded-full shadow-lg" [src]="'https://i.pravatar.cc/'+admin.id" alt="Bonnie image">
+			<h3 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{admin.username}}</h3>
+			<span class="text-sm text-gray-500 dark:text-gray-400">{{admin.role}}</span>
+			<span class="text-sm text-gray-500 dark:text-gray-400">{{admin.email}}</span>
+			<span class="text-sm text-gray-500 dark:text-gray-400">{{admin.description}}</span>
+			<div class="flex mt-4 space-x-3 lg:mt-6">
+				<a href="#"
+					class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" style="background-color: red; border-radius: 0;">
+                    Delete</a>
+				<a href="#"
+					class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-blue-300 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-800">
+                    Update Info</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+

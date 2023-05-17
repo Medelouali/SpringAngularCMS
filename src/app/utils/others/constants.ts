@@ -1,0 +1,1 @@
+export const baseUrl="http://localhost:9070/demo2_war_exploded";

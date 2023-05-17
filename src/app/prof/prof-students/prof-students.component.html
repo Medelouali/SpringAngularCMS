@@ -1,0 +1,18 @@
+<div *ngFor="let student of [1, 2, 3, 4, 5, 6, 7, 8, 9];" class="mt-6 flex flex-col gap-4 items-center justify-center bg-white">
+    <a href="#" class="w-[30rem] border-2 border-b-4 border-gray-200 rounded-xl hover:bg-gray-50">
+      <div class="grid grid-cols-6 p-5 gap-y-2">
+        <div>
+          <img [src]="'https://i.pravatar.cc/'+student" class="max-w-16 max-h-16 rounded-full" />
+        </div>
+        <!-- Description -->
+        <div class="col-span-5 md:col-span-4 ml-4">
+          <p class="text-gray-600 font-bold"> EL Ouali </p>
+          <p class="text-gray-400"> Fri, Mar 11 . 8:00 - 9:30 AM </p>
+          <p class="text-gray-400"> Beginner speakers </p>
+        </div>
+      </div>
+      <a [routerLink]="['/students', 'student-courses']">
+        <button class="w-fit bg-red-500 text-red-100 px-4 py-2">View Courses</button>
+      </a>
+    </a>
+  </div>
